@@ -20,4 +20,4 @@ Este projeto tem como objetivo identificar e delinear áreas de interesse em mam
 **CAVALO_CORES.py**: Script Python que realiza a análise das cores na imagem do cavalo.
   
 Descrição:
-Este projeto processa a imagem de um cavalo e identifica as cores predominantes na imagem, também pode selecionar apenar os pixels das cores RGB(red, green e blue), vermelho verde e azul.
+Este projeto processa a imagem de um cavalo e identifica as cores predominantes na imagem, também pode selecionar apenar os pixels das cores RGB(red, green e blue), vermelho, verde e azul.
