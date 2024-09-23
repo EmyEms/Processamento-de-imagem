@@ -7,7 +7,7 @@ Este repositório contém dois projetos de processamento de imagens utilizando P
 ### 1. Processamento de Imagens Mamográficas
 
 #### Arquivos:
-- **imagem2.jpg**: Imagem original de uma mamografia que será processada.
+- **mama.jpg**: Imagem original de uma mamografia que será processada.
 - **mama_contornos.jpg**: Imagem processada que mostra os contornos extraídos da mamografia original.
 
 #### Descrição:

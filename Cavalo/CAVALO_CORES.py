@@ -1,31 +1,38 @@
-import cv2 
-import numpy as np 
+import cv2
+import numpy as np
+import os
 
-#carregaer a imagem 
-imagem = cv2.imread('cavalo.jpg')
+# Verificar o diretório de trabalho atual
+print("Diretório de trabalho atual:", os.getcwd())
 
-#separando as camadas de cor em azul, verde e vermelho
+# Carregar a imagem com o caminho correto
+imagem = cv2.imread('Cavalo/cavalo.jpg')
+if imagem is None:
+    print("Erro: A imagem 'cavalo.jpg' não foi encontrada ou não pode ser carregada.")
+    exit()
+
+# Separar os canais de cor em azul, verde e vermelho
 azul, verde, vermelho = cv2.split(imagem)
 
-#mesclando os canais de cor na ordem AVV
-imagem_mesclada = cv2.merge ((azul, verde, vermelho))
+# Mesclar os canais de cor na ordem BGR (reconstruir a imagem original)
+imagem_mesclada = cv2.merge((azul, verde, vermelho))
 
-#Invertendo os canais de cor
-imagem_invertida = cv2.merge ((vermelho, verde, azul))
- 
-#criando uma imagem branca nas dimensoes da imagem lida
-blank = np.zeros (imagem.shape[:2], dtype = 'uint8')
+# Inverter os canais de cor (de BGR para RGB)
+imagem_invertida = cv2.merge((vermelho, verde, azul))
 
-#abrindo as imagens por canais e mesclando com as matrizes de zeros 
-canal_azul = cv2.merge([azul, blank, blank])
-canal_verde = cv2.merge([blank,verde,blank])
-canal_vermelho = cv2.merge([blank, blank,vermelho])
+# Criar uma imagem em branco (preta) com as mesmas dimensões da imagem original
+blank = np.zeros(imagem.shape[:2], dtype='uint8')
 
-#visualizando 
-cv2.imwrite ('azul.png', canal_azul)
-cv2.imwrite ('verde.png', canal_verde)
-cv2.imwrite ('vermelho.png',canal_vermelho)
+# Criar imagens destacando cada canal de cor
+canal_azul = cv2.merge([azul, blank, blank])         # Canal azul
+canal_verde = cv2.merge([blank, verde, blank])       # Canal verde
+canal_vermelho = cv2.merge([blank, blank, vermelho]) # Canal vermelho
 
-cv2.imwrite ("imagem_mesclando.png", imagem_mesclada)
+# Salvar as imagens
+cv2.imwrite('Cavalo/azul.png', canal_azul)
+cv2.imwrite('Cavalo/verde.png', canal_verde)
+cv2.imwrite('Cavalo/vermelho.png', canal_vermelho)
+cv2.imwrite('Cavalo/imagem_mesclada.png', imagem_mesclada)
+cv2.imwrite('Cavalo/imagem_invertida.png', imagem_invertida)
 
-cv2.imwrite("imagem_invertida.png", imagem_invertida)
+print("As imagens foram salvas com sucesso.")
